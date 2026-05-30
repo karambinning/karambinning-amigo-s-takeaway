@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amigos Food Hut — Peri Peri, Pizza, Kebabs &amp; Burgers · 10 Albion Street, Dunstable LU6 1SA</title>
+<meta name="description" content="Late-night peri-peri chicken, stone-baked pizza, kebabs and burgers on Albion Street, Dunstable. Open midday till midnight. Call 01582 660677 or order on Just Eat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --char:#1A0F0A;       /* smoke-black, charcoal grill */
+    --paper:#F2E8D5;      /* warm oat */
+    --cream:#FBF7EE;      /* lightest paper */
+    --flame:#D6451B;      /* primary flame red-orange */
+    --ember:#E8A23B;      /* turmeric mustard heat */
+    --chilli:#C8102E;     /* brief brand_colour_primary — used as 'open' signal pill */
+    --gold:#FFD300;       /* brief brand_colour_secondary — used as occasional accent flash */
+    --rule:rgba(26,15,10,.18);
+    --rule-light:rgba(242,232,213,.22);
+    --display:"Bebas Neue", Impact, Haettenschweiler, "Oswald", sans-serif;
+    --body:"Manrope", ui-sans-serif, system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--char);
+    font-family:var(--body);
+    font-size:clamp(15px, .85rem + .25vw, 17px);
+    line-height:1.55;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    background-image:radial-gradient(rgba(26,15,10,.05) 1px, transparent 1px);
+    background-size:3px 3px;mix-blend-mode:multiply;
+  }
+  a{color:inherit;text-decoration:none;transition:color .18s ease}
+  ::selection{background:var(--flame);color:var(--cream)}
+  h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:0;line-height:.92;text-wrap:balance}
+  p{text-wrap:pretty;hyphens:auto}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 1.4rem}
+  .display{font-family:var(--display);text-transform:uppercase;letter-spacing:.005em}
+  .mono-cap{font-family:var(--body);font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
+
+  /* ───────── top bar ───────── */
+  .topbar{
+    position:sticky;top:0;z-index:10;
+    background:var(--char);color:var(--cream);
+    border-bottom:1px solid rgba(242,232,213,.12);
+  }
+  .topbar__inner{
+    display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    padding:.65rem 1.4rem;max-width:1240px;margin:0 auto;
+    font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  }
+  .topbar a{color:var(--ember)}
+  .topbar a:hover{color:var(--gold)}
+  .topbar__phone{display:inline-flex;align-items:center;gap:.45rem}
+  .topbar__phone::before{
+    content:"";width:.5rem;height:.5rem;border-radius:50%;
+    background:var(--chilli);
+    box-shadow:0 0 0 0 rgba(200,16,46,.7);
+    animation:pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(200,16,46,.55)}
+    70%{box-shadow:0 0 0 .55rem rgba(200,16,46,0)}
+    100%{box-shadow:0 0 0 0 rgba(200,16,46,0)}
+  }
+  .nav{display:flex;gap:1.4rem;font-size:.7rem;letter-spacing:.22em}
+  .nav a{position:relative;padding:.15rem 0}
+  .nav a::after{
+    content:"";position:absolute;left:0;right:0;bottom:-.25rem;height:1px;
+    background:var(--ember);transform:scaleX(0);transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .nav a:hover::after{transform:scaleX(1)}
+  @media (max-width:720px){
+    .nav{display:none}
+    .topbar__inner{padding:.6rem 1rem}
+  }
+
+  /* ───────── hero ───────── */
+  .hero{
+    background:var(--paper);
+    padding:clamp(2rem, 4vw + 1rem, 5rem) 0 0;
+    position:relative;overflow:hidden;
+  }
+  .hero__eyebrow{
+    display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    padding:0 0 1.4rem;border-bottom:1px solid var(--rule);
+    flex-wrap:wrap;
+  }
+  .hero__eyebrow span{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
+  .hero__eyebrow span.star{color:var(--flame)}
+  .hero__grid{
+    display:grid;grid-template-columns:1.4fr .6fr;gap:1rem 2.4rem;
+    padding:2rem 0 1rem;align-items:end;position:relative;
+  }
+  .hero__wordmark h1{
+    font-size:clamp(4.6rem, 17vw, 17rem);
+    line-height:.86;letter-spacing:-.005em;
+    color:var(--char);
+    margin:0;
+  }
+  .hero__wordmark .row{display:block}
+  .hero__wordmark .row--ember{color:var(--flame)}
+  .hero__sub{
+    margin-top:1.2rem;font-family:var(--display);font-size:clamp(1.05rem, 1vw + .8rem, 1.55rem);
+    letter-spacing:.04em;color:var(--char);
+  }
+  .hero__sub b{color:var(--flame);font-weight:400}
+  .hero__right{
+    display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;gap:1.2rem;
+    text-align:right;padding-bottom:.4rem;
+  }
+  .hero__phone{
+    font-family:var(--display);font-size:clamp(2.2rem, 4vw, 3.4rem);
+    letter-spacing:.01em;color:var(--char);display:block;line-height:1;
+  }
+  .hero__phone:hover{color:var(--flame)}
+  .hero__cta-row{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+  .cta{
+    display:inline-flex;align-items:center;gap:.55rem;
+    padding:.85rem 1.2rem;font-weight:800;font-size:.78rem;
+    letter-spacing:.18em;text-transform:uppercase;
+    border:1.5px solid var(--char);
+    transition:background .18s ease, color .18s ease, transform .18s ease;
+  }
+  .cta--solid{background:var(--char);color:var(--cream)}
+  .cta--solid:hover{background:var(--flame);border-color:var(--flame);transform:translateY(-1px)}
+  .cta--ghost{background:transparent;color:var(--char)}
+  .cta--ghost:hover{background:var(--char);color:var(--cream);transform:translateY(-1px)}
+  .cta--fire{background:var(--flame);color:var(--cream);border-color:var(--flame)}
+  .cta--fire:hover{background:var(--char);border-color:var(--char)}
+
+  .hero__flame{
+    position:absolute;right:-2vw;top:-1rem;width:clamp(180px, 22vw, 320px);
+    opacity:.95;pointer-events:none;
+  }
+  @media (max-width:880px){
+    .hero__grid{grid-template-columns:1fr;gap:1.6rem}
+    .hero__right{align-items:flex-start;text-align:left}
+    .hero__cta-row{justify-content:flex-start}
+    .hero__flame{display:none}
+  }
+
+  /* ───────── marquee ───────── */
+  .marquee{
+    background:var(--char);color:var(--cream);
+    border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light);
+    overflow:hidden;padding:.9rem 0;
+  }
+  .marquee__track{
+    display:flex;gap:2.4rem;white-space:nowrap;width:max-content;
+    animation:scroll 42s linear infinite;
+    font-family:var(--display);font-size:clamp(1.3rem, 2vw, 2rem);
+    letter-spacing:.04em;
+  }
+  .marquee span{display:inline-flex;align-items:center;gap:2.4rem}
+  .marquee em{color:var(--flame);font-style:normal}
+  .marquee i{color:var(--ember);font-style:normal;font-size:.7em;transform:translateY(-.1em)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.marquee__track{animation:none}}
+
+  /* ───────── coloured slabs ───────── */
+  .slab{padding:clamp(3.4rem, 7vw, 7rem) 0;position:relative}
+  .slab--char{background:var(--char);color:var(--cream)}
+  .slab--paper{background:var(--paper);color:var(--char)}
+  .slab--cream{background:var(--cream);color:var(--char)}
+  .slab--flame{background:var(--flame);color:var(--cream)}
+  .slab__eyebrow{
+    font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;
+    margin-bottom:1.4rem;display:inline-flex;align-items:center;gap:.6rem;
+  }
+  .slab__eyebrow::before{content:"";width:1.6rem;height:1.5px;background:currentColor;display:inline-block}
+  .slab h2{
+    font-size:clamp(2.6rem, 6vw, 5.6rem);
+    margin-bottom:1.4rem;line-height:.94;
+  }
+  .slab--char h2 em{color:var(--ember);font-style:normal}
+  .slab--paper h2 em, .slab--cream h2 em{color:var(--flame);font-style:normal}
+
+  /* ───────── what we do ───────── */
+  .pillars{
+    display:grid;grid-template-columns:repeat(3, 1fr);gap:2.2rem;
+    margin-top:2.4rem;padding-top:2.4rem;
+    border-top:1px solid var(--rule-light);
+  }
+  .pillar{display:flex;flex-direction:column;gap:.7rem}
+  .pillar__num{font-family:var(--display);font-size:1.1rem;letter-spacing:.2em;color:var(--ember)}
+  .pillar h3{font-size:clamp(1.5rem, 2.2vw, 2.1rem);color:var(--cream)}
+  .pillar h3 em{color:var(--flame);font-style:normal}
+  .pillar p{font-size:1rem;color:rgba(251,247,238,.84);max-width:34ch}
+  @media (max-width:780px){.pillars{grid-template-columns:1fr;gap:2rem}}
+
+  /* ───────── about ───────── */
+  .about__grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
+  }
+  .about__lede{font-size:clamp(1.2rem, 1.4vw + .8rem, 1.7rem);line-height:1.35;font-weight:500;max-width:32ch}
+  .about__lede em{color:var(--flame);font-style:normal;font-weight:700}
+  .about__body p{margin-bottom:1rem;font-size:1.02rem;max-width:50ch}
+  .about__body p:last-child{margin-bottom:0}
+  .stat-row{
+    display:flex;gap:2.4rem;margin-top:2.4rem;padding-top:2rem;
+    border-top:1px solid var(--rule);flex-wrap:wrap;
+  }
+  .stat{display:flex;flex-direction:column;gap:.2rem}
+  .stat__big{font-family:var(--display);font-size:clamp(2.4rem, 4vw, 3.6rem);line-height:1;color:var(--flame)}
+  .stat__lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
+  @media (max-width:780px){.about__grid{grid-template-columns:1fr;gap:1.6rem}}
+
+  /* ───────── menu / services ───────── */
+  .menu{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:0;
+    margin-top:2rem;
+    border-top:1px solid var(--rule);
+  }
+  .menu__item{
+    padding:1.6rem 1.4rem;
+    border-bottom:1px solid var(--rule);
+    display:flex;flex-direction:column;gap:.5rem;
+    position:relative;
+    transition:background .25s ease;
+  }
+  .menu__item:nth-child(odd){border-right:1px solid var(--rule)}
+  .menu__item:hover{background:rgba(214,69,27,.06)}
+  .menu__item h3{
+    font-size:clamp(1.8rem, 2.8vw, 2.7rem);
+    color:var(--char);letter-spacing:.005em;
+  }
+  .menu__item p{font-size:.97rem;color:rgba(26,15,10,.74);max-width:42ch}
+  .menu__item .tag{
+    align-self:flex-start;font-size:.65rem;letter-spacing:.22em;font-weight:800;
+    color:var(--flame);text-transform:uppercase;
+  }
+  .menu__item--specialism{background:var(--char);color:var(--cream)}
+  .menu__item--specialism h3{color:var(--cream)}
+  .menu__item--specialism h3 em{color:var(--ember);font-style:normal}
+  .menu__item--specialism p{color:rgba(251,247,238,.82)}
+  .menu__item--specialism .tag{color:var(--chilli);font-weight:800}
+  .menu__item--specialism:hover{background:#241308}
+  @media (max-width:720px){
+    .menu{grid-template-columns:1fr}
+    .menu__item:nth-child(odd){border-right:0}
+  }
+
+  .menu__foot{
+    display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    padding:2rem 0 .4rem;flex-wrap:wrap;
+  }
+  .menu__foot p{font-size:.95rem;max-width:48ch;color:rgba(26,15,10,.72)}
+
+  /* ───────── contact / find us ───────── */
+  .find__grid{
+    display:grid;grid-template-columns:1fr 1.1fr;gap:2.6rem;align-items:stretch;
+  }
+  .find__info{display:flex;flex-direction:column;gap:1.6rem}
+  .info-block{display:flex;flex-direction:column;gap:.35rem}
+  .info-block__lbl{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:rgba(251,247,238,.72)}
+  .info-block__val{font-family:var(--display);font-size:clamp(1.6rem, 2.2vw, 2.2rem);line-height:1.1;color:var(--cream)}
+  .info-block__val a:hover{color:var(--ember)}
+  .find__map{
+    border:0;width:100%;height:100%;min-height:380px;
+    filter:grayscale(.7) contrast(1.05) sepia(.15);
+    border-radius:0;
+    background:#241308;
+  }
+  @media (max-width:780px){
+    .find__grid{grid-template-columns:1fr;gap:2rem}
+    .find__map{min-height:300px}
+  }
+
+  /* ───────── gallery ───────── */
+  .gallery__intro{display:flex;justify-content:space-between;gap:1rem;align-items:end;flex-wrap:wrap;margin-bottom:2rem}
+  .gallery__intro p{max-width:46ch;font-size:.98rem;color:rgba(26,15,10,.74)}
+  .gallery{
+    display:grid;grid-template-columns:repeat(6, 1fr);gap:.7rem;
+    grid-auto-rows:minmax(140px, 18vw);
+  }
+  .tile{
+    display:flex;align-items:flex-end;justify-content:flex-start;
+    padding:1.2rem;position:relative;overflow:hidden;
+    border:1px solid var(--rule);
+  }
+  .tile span.cat{
+    font-family:var(--display);font-size:clamp(1.6rem, 2.6vw, 2.8rem);
+    line-height:.94;letter-spacing:.005em;
+  }
+  .tile span.lbl{
+    position:absolute;top:1rem;left:1.2rem;
+    font-size:.62rem;letter-spacing:.24em;font-weight:800;text-transform:uppercase;opacity:.7;
+  }
+  .tile--char{background:var(--char);color:var(--cream);grid-column:span 3;grid-row:span 2}
+  .tile--flame{background:var(--flame);color:var(--cream);grid-column:span 3}
+  .tile--ember{background:var(--ember);color:var(--char);grid-column:span 2}
+  .tile--paper{background:var(--cream);color:var(--char);grid-column:span 2;border-color:var(--rule)}
+  .tile--gold{background:var(--gold);color:var(--char);grid-column:span 2}
+  .tile--char2{background:#241308;color:var(--ember);grid-column:span 3}
+  .tile--paper2{background:var(--paper);color:var(--char);grid-column:span 3}
+  @media (max-width:780px){
+    .gallery{grid-template-columns:repeat(2, 1fr);grid-auto-rows:140px}
+    .tile{grid-column:span 1 !important;grid-row:span 1 !important}
+    .tile--char{grid-column:span 2 !important;grid-row:span 1 !important}
+  }
+
+  /* ───────── footer-letterhead ───────── */
+  .letterhead{
+    background:var(--char);color:var(--cream);
+    padding:clamp(3rem, 5vw, 5rem) 0 2rem;
+  }
+  .letterhead__top{
+    display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;
+    padding-bottom:2rem;border-bottom:1px solid rgba(242,232,213,.15);flex-wrap:wrap;
+  }
+  .letterhead__mark{
+    font-family:var(--display);font-size:clamp(3rem, 6.5vw, 6.5rem);line-height:.9;color:var(--cream);
+  }
+  .letterhead__mark em{color:var(--flame);font-style:normal}
+  .letterhead__cols{
+    display:grid;grid-template-columns:repeat(4, 1fr);gap:2rem;
+    padding-top:2rem;
+  }
+  .col h4{
+    font-family:var(--display);font-size:1.1rem;letter-spacing:.22em;color:var(--ember);margin-bottom:.7rem;
+  }
+  .col p, .col a{font-size:.9rem;color:rgba(251,247,238,.84);line-height:1.6;display:block}
+  .col a:hover{color:var(--ember)}
+  .letterhead__base{
+    margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid rgba(242,232,213,.15);
+    display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(251,247,238,.6);
+  }
+  @media (max-width:780px){
+    .letterhead__cols{grid-template-columns:1fr 1fr;gap:1.6rem}
+  }
+  @media (max-width:480px){
+    .letterhead__cols{grid-template-columns:1fr}
+  }
+
+  /* ───────── scroll reveals (CSS only) ───────── */
+  @supports (animation-timeline: view()){
+    .reveal{
+      animation: rise both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+    @keyframes rise{
+      from{opacity:0;transform:translateY(1.4rem)}
+      to{opacity:1;transform:translateY(0)}
+    }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{animation:none !important}
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ───────── TOP BAR ───────── -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <div>10 Albion St · Dunstable · LU6 1SA</div>
+    <nav class="nav" aria-label="primary">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#find">Find Us</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+    <a class="topbar__phone" href="tel:+441582660677" aria-label="Call Amigos on 0 1 5 8 2 6 6 0 6 7 7">
+      Open · 01582 660677
+    </a>
+  </div>
+</header>
+
+<!-- ───────── HERO ───────── -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero__eyebrow">
+      <span>Est. on Albion Street</span>
+      <span class="star">★ 4.5 · 421 reviews on Just Eat</span>
+      <span>Open midday till midnight</span>
+    </div>
+
+    <div class="hero__grid">
+      <div class="hero__wordmark">
+        <h1>
+          <span class="row">Amigos</span>
+          <span class="row row--ember">Food&nbsp;Hut</span>
+        </h1>
+        <p class="hero__sub">
+          Peri Peri Chicken · Stone-Baked Pizza · Kebabs · Burgers · Wraps · <b>Takeaway on Albion Street, Dunstable LU6 1SA</b>
+        </p>
+      </div>
+
+      <div class="hero__right">
+        <a class="hero__phone" href="tel:+441582660677" aria-label="Call 01582 660677">
+          01582&nbsp;660677
+        </a>
+        <div class="hero__cta-row">
+          <a class="cta cta--fire" href="https://www.just-eat.co.uk/restaurants-amigos-food-hut-new-dunstable-lu6" rel="noopener" target="_blank">Order on Just Eat →</a>
+          <a class="cta cta--ghost" href="#menu">See Menu</a>
+        </div>
+      </div>
+
+      <!-- Hand-drawn flame motif, SVG -->
+      <svg class="hero__flame" viewBox="0 0 200 280" aria-hidden="true">
+        <defs>
+          <linearGradient id="f1" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#C8102E"/>
+            <stop offset=".55" stop-color="#D6451B"/>
+            <stop offset="1" stop-color="#E8A23B"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#f1)" d="M100 270c-46 0-78-32-78-72 0-32 22-56 36-78 8-12 12-22 8-36-2-9 4-13 10-9 22 14 30 38 28 60-1 16 4 22 14 16 14-9 18-26 14-44-2-9 6-13 12-7 30 30 44 64 44 102 0 38-32 68-88 68Z"/>
+        <path fill="#FBF7EE" opacity=".85" d="M100 222c-18 0-30-12-30-28 0-14 10-22 16-32 4-6 4-12 2-18 0-4 4-6 8-2 12 8 14 22 12 32-1 8 2 10 7 6 6-4 8-12 6-20 0-4 4-6 8-2 14 12 18 28 18 42 0 16-12 22-47 22Z"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── MARQUEE ───────── -->
+<section class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>
+      <em>Peri</em> Peri Chicken <i>✦</i>
+      Stone-Baked Pizza <i>✦</i>
+      Doner &amp; Shish Kebabs <i>✦</i>
+      Burgers <i>✦</i>
+      Fried Chicken <i>✦</i>
+      Wraps &amp; Salads <i>✦</i>
+      <em>Open till Midnight</em> <i>✦</i>
+      Call <em>01582 660677</em> <i>✦</i>
+      LU6 1SA <i>✦</i>
+    </span>
+    <span>
+      <em>Peri</em> Peri Chicken <i>✦</i>
+      Stone-Baked Pizza <i>✦</i>
+      Doner &amp; Shish Kebabs <i>✦</i>
+      Burgers <i>✦</i>
+      Fried Chicken <i>✦</i>
+      Wraps &amp; Salads <i>✦</i>
+      <em>Open till Midnight</em> <i>✦</i>
+      Call <em>01582 660677</em> <i>✦</i>
+      LU6 1SA <i>✦</i>
+    </span>
+  </div>
+</section>
+
+<!-- ───────── WHAT WE DO ───────── -->
+<section class="slab slab--char">
+  <div class="wrap">
+    <div class="slab__eyebrow reveal">What We Do</div>
+    <h2 class="reveal">Late-night flame food on <em>Albion Street</em>.</h2>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <span class="pillar__num">01</span>
+        <h3><em>Peri Peri</em><br>Chicken</h3>
+        <p>Marinated and flame-grilled. Pick your heat — plain, lemon &amp; herb, medium, hot, extra hot. Whole birds, halves, quarters, wings, strips and wraps.</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar__num">02</span>
+        <h3>Pizza,<br>Kebabs<br>&amp; Burgers</h3>
+        <p>Stone-baked pizzas, doner and shish kebabs, fresh burgers, fried chicken, jacket potatoes, fish &amp; chips, wraps and salads — the whole takeaway top shelf.</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="pillar__num">03</span>
+        <h3>Midday<br>till<br><em>Midnight</em></h3>
+        <p>Open through dinner and well into the evening. Collect from the counter or order on Just Eat for delivery across Dunstable and beyond.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── ABOUT ───────── -->
+<section class="slab slab--paper" id="about">
+  <div class="wrap">
+    <div class="slab__eyebrow reveal">About Amigos</div>
+    <div class="about__grid">
+      <div class="about__lede reveal">
+        Peri-peri chicken is <em>Portuguese-African flame food</em> — marinated birds, fire-grilled, served with the heat you choose.
+      </div>
+      <div class="about__body reveal">
+        <p>Amigos Food Hut sits at 10 Albion Street in the heart of Dunstable, a few minutes off the A5 and a short walk from the town square. The kitchen turns out peri-peri chicken to Nando’s-style heat scales, stone-baked pizzas, doner and shish kebabs, burgers, fried chicken, and the usual late-night takeaway favourites.</p>
+        <p>We’re known locally as <em>Amigo’s</em> — the friend you call when you want flame food without leaving the house. Collect from the counter, or order on Just Eat for delivery anywhere in LU6.</p>
+      </div>
+    </div>
+    <div class="stat-row reveal">
+      <div class="stat"><span class="stat__big">4.5★</span><span class="stat__lbl">Just Eat Rating</span></div>
+      <div class="stat"><span class="stat__big">421</span><span class="stat__lbl">Verified Reviews</span></div>
+      <div class="stat"><span class="stat__big">LU6 1SA</span><span class="stat__lbl">Albion Street, Dunstable</span></div>
+      <div class="stat"><span class="stat__big">12 → 24</span><span class="stat__lbl">Open Midday — Midnight</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── MENU / SERVICES ───────── -->
+<section class="slab slab--cream" id="menu">
+  <div class="wrap">
+    <div class="slab__eyebrow reveal">The Menu</div>
+    <h2 class="reveal">Eight things we do, and <em>do well</em>.</h2>
+
+    <div class="menu">
+      <article class="menu__item menu__item--specialism reveal">
+        <span class="tag">★ Specialism</span>
+        <h3><em>Peri Peri</em> Chicken</h3>
+        <p>Whole, half and quarter birds, plus wings, strips and burgers. Choose your heat: plain, lemon &amp; herb, medium, hot, extra hot.</p>
+      </article>
+
+      <article class="menu__item reveal">
+        <span class="tag">From the Oven</span>
+        <h3>Stone-Baked Pizza</h3>
+        <p>10″ and 12″ classic and house-special pizzas, plus garlic bread and dough sticks on the side.</p>
+      </article>
+
+      <article class="menu__item reveal">
+        <span class="tag">From the Grill</span>
+        <h3>Doner &amp; Shish Kebabs</h3>
+        <p>Doner, shish, mixed and kofte — served in pitta, naan, on a plate, or as a wrap.</p>
+      </article>
+
+      <article class="menu__item reveal">
+        <span class="tag">Hand-Pressed</span>
+        <h3>Burgers</h3>
+        <p>Beef and chicken burgers, cheeseburgers, peri-peri chicken burgers, plus a few specials.</p>
+      </article>
+
+      <article class="menu__item reveal">
+        <span class="tag">Crispy</span>
+        <h3>Fried Chicken</h3>
+        <p>Bone-in pieces, strips, wings, and a few combo meals — with chips, dips, and a drink.</p>
+      </article>
+
+      <article class="menu__item reveal">
+        <span class="tag">Lighter</span>
+        <h3>Wraps &amp; Salads</h3>
+        <p>Peri-peri chicken wraps, doner wraps, falafel options, plus garden and chicken salads.</p>
+      </article>
+
+      <article class="menu__item reveal">
+        <span class="tag">On the Side</span>
+        <h3>Sides &amp; Dips</h3>
+        <p>Chips, cheesy chips, peri-peri fries, garlic bread, onion rings, jackets, plus a full dip board.</p>
+      </article>
+
+      <article class="menu__item reveal">
+        <span class="tag">After</span>
+        <h3>Desserts &amp; Drinks</h3>
+        <p>Ice cream, kids’ meals, soft drinks, juices and water. Ask at the counter for what’s on tonight.</p>
+      </article>
+    </div>
+
+    <div class="menu__foot">
+      <p>Full menu, prices and live availability — and a full set of meal deals — live on Just Eat.</p>
+      <a class="cta cta--solid" href="https://www.just-eat.co.uk/restaurants-amigos-food-hut-new-dunstable-lu6" rel="noopener" target="_blank">See full menu & order →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FIND US / CONTACT ───────── -->
+<section class="slab slab--flame" id="find">
+  <div class="wrap">
+    <div class="slab__eyebrow reveal">Find Us</div>
+    <h2 class="reveal">Albion Street, Dunstable.<br>Midday till midnight.</h2>
+
+    <div class="find__grid" style="margin-top:2rem">
+      <div class="find__info reveal">
+        <div class="info-block">
+          <span class="info-block__lbl">Call</span>
+          <span class="info-block__val"><a href="tel:+441582660677">01582&nbsp;660677</a></span>
+        </div>
+        <div class="info-block">
+          <span class="info-block__lbl">Walk in</span>
+          <span class="info-block__val">10 Albion Street<br>Dunstable<br>LU6 1SA</span>
+        </div>
+        <div class="info-block">
+          <span class="info-block__lbl">Order online</span>
+          <span class="info-block__val"><a href="https://www.just-eat.co.uk/restaurants-amigos-food-hut-new-dunstable-lu6" target="_blank" rel="noopener">Just Eat →</a></span>
+        </div>
+        <div class="info-block">
+          <span class="info-block__lbl">Hours</span>
+          <span class="info-block__val">Daily · midday — midnight<br><span style="font-family:var(--body);font-size:.85rem;letter-spacing:.04em;text-transform:none;color:rgba(251,247,238,.78)">Check Just Eat for live availability before you set off.</span></span>
+        </div>
+      </div>
+
+      <iframe
+        class="find__map reveal"
+        loading="lazy"
+        title="Map of 10 Albion Street, Dunstable LU6 1SA"
+        src="https://www.google.com/maps?q=10+Albion+Street,+Dunstable,+LU6+1SA&output=embed"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── GALLERY ───────── -->
+<section class="slab slab--paper" id="gallery">
+  <div class="wrap">
+    <div class="gallery__intro reveal">
+      <div>
+        <div class="slab__eyebrow">Gallery</div>
+        <h2>Coming soon, from the<br>flame and the oven.</h2>
+      </div>
+      <p>Photography is on the way. In the meantime, here is the menu set as type — drop in for the real thing, or order it on Just Eat.</p>
+    </div>
+
+    <div class="gallery">
+      <div class="tile tile--char">
+        <span class="lbl">★ Specialism</span>
+        <span class="cat">Peri Peri<br>Chicken.</span>
+      </div>
+      <div class="tile tile--flame">
+        <span class="lbl">From the oven</span>
+        <span class="cat">Stone-Baked<br>Pizza.</span>
+      </div>
+      <div class="tile tile--ember">
+        <span class="lbl">From the grill</span>
+        <span class="cat">Doner.<br>Shish.</span>
+      </div>
+      <div class="tile tile--paper">
+        <span class="lbl">Hand-pressed</span>
+        <span class="cat">Burgers.</span>
+      </div>
+      <div class="tile tile--gold">
+        <span class="lbl">On the side</span>
+        <span class="cat">Peri Fries.<br>Dips.</span>
+      </div>
+      <div class="tile tile--char2">
+        <span class="lbl">Crispy</span>
+        <span class="cat">Fried<br>Chicken.</span>
+      </div>
+      <div class="tile tile--paper2">
+        <span class="lbl">Lighter</span>
+        <span class="cat">Wraps &amp; Salads.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER-LETTERHEAD ───────── -->
+<footer class="letterhead">
+  <div class="wrap">
+    <div class="letterhead__top">
+      <div class="letterhead__mark">Amigos<br><em>Food&nbsp;Hut</em></div>
+      <a class="cta cta--fire" href="tel:+441582660677" style="align-self:flex-start">Call 01582 660677</a>
+    </div>
+
+    <div class="letterhead__cols">
+      <div class="col">
+        <h4>Address</h4>
+        <p>10 Albion Street<br>Dunstable<br>Bedfordshire<br>LU6 1SA</p>
+      </div>
+      <div class="col">
+        <h4>Contact</h4>
+        <a href="tel:+441582660677">01582 660677</a>
+        <a href="https://www.just-eat.co.uk/restaurants-amigos-food-hut-new-dunstable-lu6" target="_blank" rel="noopener">Just Eat</a>
+      </div>
+      <div class="col">
+        <h4>Hours</h4>
+        <p>Daily<br>Midday — Midnight<br><span style="font-size:.78rem;opacity:.7">Check Just Eat for live availability</span></p>
+      </div>
+      <div class="col">
+        <h4>Reputation</h4>
+        <p>★ 4.5 / 5<br>421 Just Eat reviews<br>Late-night, locally rated.</p>
+      </div>
+    </div>
+
+    <div class="letterhead__base">
+      <span>© Amigos Food Hut · Dunstable · LU6 1SA</span>
+      <span>Site built by Build Jr · Binning.AI</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
